@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/datatables@1.10.18/media/css/jquery.dataTables.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/pulse/bootstrap.min.css" rel="stylesheet">
+
+  <title>Database Explorer</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="#">COSC-578 DB Explorer</a>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <div class="row">
+      <aside class="col-md-3">
+        <h3>Tables</h3>
+        <ul id="tableList" class="list-group">
+          <!-- Table names will be inserted here dynamically -->
+        </ul>
+      </aside>
+      <section class="col-md-9">
+        <h3>Query Executor</h3>
+        <textarea id="queryInput" class="form-control" placeholder="Enter your SQL query here" rows="4" spellcheck="false"></textarea>
+        <button onclick="fetchQueryData()" class="btn btn-primary mt-2">Execute Query</button>
+        <button onclick="clearQueryInput()" class="btn btn-secondary mt-2">Clear Query</button>
+
+        <div id="message" class="alert mt-3" role="alert" style="display:none;"></div>
+
+        <div id="data-table-container" class="my-5">
+          <table id="data-table" class="display"></table>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+    integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/datatables@1.10.18/media/js/jquery.dataTables.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
