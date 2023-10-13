@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    container_name: mysql-db
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: company_db
+
+  # mssql:
+  #   image: mcr.microsoft.com/mssql/server
+  #   restart: unless-stopped
+  #   container_name: mssql-db
+  #   ports:
+  #     - '1433:1433'
+  #   volumes:
+  #     - mssql-data:/var/opt/mssql
+  #   environment:
+  #     ACCEPT_EULA: 'Y'
+  #     SA_PASSWORD: COSC*457
+
+  azuresqledge:
+    image: mcr.microsoft.com/azure-sql-edge
+    restart: unless-stopped
+    container_name: azuresqledge-db
+    ports:
+      - '14330:1433'
+    volumes:
+      - azuresqledge-data:/var/opt/azuresqledge
+    environment:
+      ACCEPT_EULA: 'Y'
+      MSSQL_SA_PASSWORD: COSC!578
+
+volumes:
+  mysql-data:
+    driver: local
+  azuresqledge-data:
+    driver: local
